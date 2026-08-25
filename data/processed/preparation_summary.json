@@ -1,0 +1,14 @@
+{
+  "project": "VerifiedRAG",
+  "stage": "01_data_preparation",
+  "num_source_papers": 5,
+  "num_extracted_pages": 82,
+  "num_final_chunks": 516,
+  "chunk_size_chars": 1000,
+  "chunk_overlap_chars": 150,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "faiss_index": "IndexFlatIP",
+  "normalized_embeddings": true,
+  "device_used_for_embeddings": "cuda"
+}

@@ -1,0 +1,8 @@
+{
+  "index_type": "IndexFlatIP",
+  "metric": "inner_product",
+  "vectors_normalized": true,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "dimension": 384,
+  "num_vectors": 516
+}

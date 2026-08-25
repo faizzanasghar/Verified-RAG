@@ -1,0 +1,8 @@
+{
+  "num_papers": 5,
+  "num_pages": 82,
+  "num_chunks": 516,
+  "chunk_size": 1000,
+  "chunk_overlap": 150,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2"
+}
