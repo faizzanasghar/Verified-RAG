@@ -1,0 +1,9 @@
+pymupdf
+sentence-transformers
+faiss-cpu
+torch
+tqdm
+pandas
+numpy
+requests
+python-dotenv
