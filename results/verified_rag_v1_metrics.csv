@@ -1,0 +1,7 @@
+question,claims,supported,refuted,not_enough_evidence,support_rate,refutation_rate,unsupported_rate,strict_pass,repairs,total_time_seconds
+What problem does residual learning address in very deep neural networks?,1,0,0,1,0.0,0.0,1.0,False,2,42.881175831999826
+What is the main architectural idea of the Transformer?,1,0,0,1,0.0,0.0,1.0,False,2,68.71230668499993
+Why does the Transformer not require recurrence to model relationships between tokens?,1,0,1,0,0.0,1.0,0.0,False,2,50.44950067400055
+What is the purpose of pre-training in BERT?,1,0,0,1,0.0,0.0,1.0,False,2,68.24958998899979
+What are the two moment estimates used by Adam?,1,1,0,0,1.0,0.0,0.0,True,0,15.487037102000158
+How does Adam adapt the learning rate for individual parameters?,1,0,0,1,0.0,0.0,1.0,False,2,60.71943532299974
