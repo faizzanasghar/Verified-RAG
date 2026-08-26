@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "seed": 42,
+    "generator_model": "Qwen/Qwen2.5-3B-Instruct",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "nli_model": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+    "top_k": 5,
+    "claim_top_k": 3,
+    "max_repairs": 2,
+    "benchmark_size": 6
+  },
+  "summary": [
+    {
+      "system": "Baseline RAG",
+      "support_rate": 0.7404761904761905,
+      "unsupported_rate": 0.21785714285714286,
+      "refutation_rate": 0.041666666666666664,
+      "strict_pass_rate": 0.5,
+      "citation_validity": 0.16666666666666666,
+      "mean_latency_seconds": 7.555883129666692,
+      "mean_repairs": 0.0
+    },
+    {
+      "system": "Verified RAG",
+      "support_rate": 0.8154761904761906,
+      "unsupported_rate": 0.18452380952380953,
+      "refutation_rate": 0.0,
+      "strict_pass_rate": 0.6666666666666666,
+      "citation_validity": 0.3333333333333333,
+      "mean_latency_seconds": 37.566344079833335,
+      "mean_repairs": 1.0
+    }
+  ],
+  "comparison": [
+    {
+      "metric": "Support-rate improvement",
+      "difference": 0.07500000000000007
+    },
+    {
+      "metric": "Unsupported-rate reduction",
+      "difference": 0.033333333333333326
+    },
+    {
+      "metric": "Refutation-rate reduction",
+      "difference": 0.041666666666666664
+    },
+    {
+      "metric": "Strict-pass improvement",
+      "difference": 0.16666666666666663
+    },
+    {
+      "metric": "Citation-validity improvement",
+      "difference": 0.16666666666666666
+    },
+    {
+      "metric": "Latency overhead",
+      "difference": 3.9718005738252433
+    }
+  ],
+  "per_question": [
+    {
+      "id": "q01",
+      "baseline_support": 1.0,
+      "verified_support": 1.0,
+      "support_delta": 0.0,
+      "baseline_unsupported": 0.0,
+      "verified_unsupported": 0.0,
+      "baseline_refuted": 0.0,
+      "verified_refuted": 0.0,
+      "baseline_pass": true,
+      "verified_pass": true,
+      "repairs": 0
+    },
+    {
+      "id": "q02",
+      "baseline_support": 1.0,
+      "verified_support": 1.0,
+      "support_delta": 0.0,
+      "baseline_unsupported": 0.0,
+      "verified_unsupported": 0.0,
+      "baseline_refuted": 0.0,
+      "verified_refuted": 0.0,
+      "baseline_pass": true,
+      "verified_pass": true,
+      "repairs": 0
+    },
+    {
+      "id": "q03",
+      "baseline_support": 1.0,
+      "verified_support": 1.0,
+      "support_delta": 0.0,
+      "baseline_unsupported": 0.0,
+      "verified_unsupported": 0.0,
+      "baseline_refuted": 0.0,
+      "verified_refuted": 0.0,
+      "baseline_pass": true,
+      "verified_pass": true,
+      "repairs": 0
+    },
+    {
+      "id": "q04",
+      "baseline_support": 0.5,
+      "verified_support": 0.75,
+      "support_delta": 0.25,
+      "baseline_unsupported": 0.25,
+      "verified_unsupported": 0.25,
+      "baseline_refuted": 0.25,
+      "verified_refuted": 0.0,
+      "baseline_pass": false,
+      "verified_pass": false,
+      "repairs": 2
+    },
+    {
+      "id": "q05",
+      "baseline_support": 0.8,
+      "verified_support": 1.0,
+      "support_delta": 0.19999999999999996,
+      "baseline_unsupported": 0.2,
+      "verified_unsupported": 0.0,
+      "baseline_refuted": 0.0,
+      "verified_refuted": 0.0,
+      "baseline_pass": false,
+      "verified_pass": true,
+      "repairs": 2
+    },
+    {
+      "id": "q06",
+      "baseline_support": 0.14285714285714285,
+      "verified_support": 0.14285714285714285,
+      "support_delta": 0.0,
+      "baseline_unsupported": 0.8571428571428571,
+      "verified_unsupported": 0.8571428571428571,
+      "baseline_refuted": 0.0,
+      "verified_refuted": 0.0,
+      "baseline_pass": false,
+      "verified_pass": false,
+      "repairs": 2
+    }
+  ],
+  "bootstrap_support": {
+    "observed": 0.07500000000000007,
+    "ci_lower": 0.0,
+    "ci_upper": 0.15833333333333344
+  }
+}
