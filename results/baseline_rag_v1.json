@@ -1,0 +1,685 @@
+{
+  "metadata": {
+    "experiment": "baseline_rag_v1",
+    "model": "Qwen/Qwen2.5-3B-Instruct",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "top_k": 5,
+    "max_new_tokens": 300,
+    "sampling": false,
+    "temperature": 0.0,
+    "corpus_metadata": {
+      "num_papers": 5,
+      "num_pages": 82,
+      "num_chunks": 516,
+      "chunk_size": 1000,
+      "chunk_overlap": 150,
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2"
+    },
+    "num_questions": 6,
+    "runtime": "Tesla T4"
+  },
+  "results": [
+    {
+      "question_id": "q01",
+      "question": "What problem does residual learning address in very deep neural networks?",
+      "expected_papers": [
+        "resnet_2015"
+      ],
+      "answer": "Residual learning addresses the problem of vanishing/exploding gradients in very deep neural networks, which hinders their convergence. As networks become deeper, residual learning helps prevent degradation in performance by allowing the network to learn residual functions that help maintain accuracy even as depth increases. This approach mitigates the issue of overfitting and allows for the training of very deep networks that achieve better performance than shallower networks. [SOURCE: resnet_2015_p001_c003]",
+      "sources": [
+        {
+          "chunk_id": "resnet_2015_p001_c000",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 1,
+          "score": 0.6756841540336609
+        },
+        {
+          "chunk_id": "resnet_2015_p005_c003",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 5,
+          "score": 0.6420871019363403
+        },
+        {
+          "chunk_id": "resnet_2015_p002_c002",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 2,
+          "score": 0.6357020139694214
+        },
+        {
+          "chunk_id": "resnet_2015_p001_c003",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 1,
+          "score": 0.6102889776229858
+        },
+        {
+          "chunk_id": "resnet_2015_p002_c008",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 2,
+          "score": 0.5960823893547058
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "vector_index": 410,
+          "chunk_id": "resnet_2015_p001_c000",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 1,
+          "chunk_on_page": 0,
+          "text": "Deep Residual Learning for Image Recognition Kaiming He Xiangyu Zhang Shaoqing Ren Jian Sun Microsoft Research {kahe, v-xiangz, v-shren, jiansun}@microsoft.com Abstract Deeper neural networks are more difﬁcult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers—8× deeper than VGG nets [41] but still having lower complexity. An ensemble of these residual nets achieves 3.57% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classiﬁcation task",
+          "score": 0.6756841540336609
+        },
+        {
+          "vector_index": 447,
+          "chunk_id": "resnet_2015_p005_c003",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 5,
+          "chunk_on_page": 3,
+          "text": "curacy (Table 3), suggesting that the solver works to some extent. We conjecture that the deep plain nets may have exponentially low convergence rates which impact the reducing of the training error3. The reason for such optimization difﬁculties will be studied in the future. Residual Networks. Next we evaluate 18-layer and 34layer residual nets (ResNets)",
+          "score": 0.6420871019363403
+        },
+        {
+          "vector_index": 418,
+          "chunk_id": "resnet_2015_p002_c002",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 2,
+          "chunk_on_page": 2,
+          "text": "We show that: 1) Our extremely deep residual nets are easy to optimize, but the counterpart “plain” nets (that simply stack layers) exhibit higher training error when the depth increases; 2) Our deep residual nets can easily enjoy accuracy gains from greatly increased depth, producing results substantially better than previous networks. Similar phenomena are also shown on the CIFAR-10 set [20], suggesting that the optimization difﬁculties and the effects of our method are not just akin to a particular dataset. We present successfully trained models on this dataset with over 100 layers, and explore models with over 1000 layers. On the ImageNet classiﬁcation dataset [36], we obtain excellent results by extremely deep residual nets. Our 152layer residual net is the deepest network ever presented on ImageNet, while still having lower complexity than VGG nets [41]. Our ensemble has 3.57% top-5 error on the ImageNet test set, and won the 1st place in the ILSVRC 2015 classiﬁcation competition",
+          "score": 0.6357020139694214
+        },
+        {
+          "vector_index": 413,
+          "chunk_id": "resnet_2015_p001_c003",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 1,
+          "chunk_on_page": 3,
+          "text": "r network has higher training error, and thus test error. Similar phenomena on ImageNet is presented in Fig. 4. greatly beneﬁted from very deep models Driven by the signiﬁcance of depth, a question arises: Is learning better networks as easy as stacking more layers? An obstacle to answering this question was the notorious problem of vanishing/exploding gradients [1, 9], which hamper convergence from the beginning. This problem, however, has been largely addressed by normalized initialization [23, 9, 37, 13] and intermediate normalization layers [16], which enable networks with tens of layers to start converging for stochastic gradient descent (SGD) with backpropagation [22]. When deeper networks are able to start converging, a degradation problem has been exposed: with the network depth increasing, accuracy gets saturated (which might be unsurprising) and then degrades rapidly. Unexpectedly, such degradation is not caused by overﬁtting",
+          "score": 0.6102889776229858
+        },
+        {
+          "vector_index": 424,
+          "chunk_id": "resnet_2015_p002_c008",
+          "paper_id": "resnet_2015",
+          "title": "Deep Residual Learning for Image Recognition",
+          "page": 2,
+          "chunk_on_page": 8,
+          "text": "(approaching zero), the layers in highway networks represent non-residual functions. On the contrary, our formulation always learns residual functions our identity shortcuts are never closed, and all information is always passed through, with additional residual functions to be learned. In addition, high2",
+          "score": 0.5960823893547058
+        }
+      ],
+      "retrieval_time_seconds": 0.017637558000160425,
+      "generation_time_seconds": 7.328718196999944,
+      "prompt_tokens": 1136,
+      "generated_tokens": 102,
+      "citations": [
+        "resnet_2015_p001_c003"
+      ],
+      "valid_citations": [
+        "resnet_2015_p001_c003"
+      ],
+      "invalid_citations": []
+    },
+    {
+      "question_id": "q02",
+      "question": "What is the main architectural idea of the Transformer?",
+      "expected_papers": [
+        "attention_2017"
+      ],
+      "answer": "The main architectural idea of the Transformer is the use of stacked self-attention mechanisms combined with point-wise, fully connected feed-forward networks. This architecture is illustrated in Figure 1 of the paper \"Attention Is All You Need\" [SOURCE: attention_2017_p003_c000].\n\nEach layer consists of two sub-layers: a multi-head self-attention mechanism and a position-wise, fully connected feed-forward network. These sub-layers are connected using residual connections, followed by layer normalization. The Transformer model architecture is symmetric for both the encoder and decoder stacks, with each stack containing 6 identical layers.",
+      "sources": [
+        {
+          "chunk_id": "bert_2018_p008_c006",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 8,
+          "score": 0.43980011343955994
+        },
+        {
+          "chunk_id": "attention_2017_p003_c000",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 3,
+          "score": 0.4200468957424164
+        },
+        {
+          "chunk_id": "bert_2018_p009_c005",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 9,
+          "score": 0.4151826500892639
+        },
+        {
+          "chunk_id": "attention_2017_p001_c003",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 1,
+          "score": 0.41518235206604004
+        },
+        {
+          "chunk_id": "gpt2_2019_p010_c008",
+          "paper_id": "gpt2_2019",
+          "title": "Language Models are Unsupervised Multitask Learners",
+          "page": 10,
+          "score": 0.3846088945865631
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "vector_index": 191,
+          "chunk_id": "bert_2018_p008_c006",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 8,
+          "chunk_on_page": 6,
+          "text": "ch are already quite large relative to the existing literature. For example, the largest Transformer explored in Vaswani et al. (2017) is (L=6, H=1024 A=16) with 100M parameters for the encoder, and the largest Transformer we have found in the literature is (L=64, H=512, A=2) with 235M parameters (Al-Rfou et al., 2018)",
+          "score": 0.43980011343955994
+        },
+        {
+          "vector_index": 82,
+          "chunk_id": "attention_2017_p003_c000",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 3,
+          "chunk_on_page": 0,
+          "text": "Figure 1: The Transformer - model architecture. The Transformer follows this overall architecture using stacked self-attention and point-wise, fully connected layers for both the encoder and decoder, shown in the left and right halves of Figure 1, respectively. 3.1 Encoder and Decoder Stacks Encoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, positionwise fully connected feed-forward network. We employ a residual connection [11] around each of the two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is LayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer itself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding layers, produce outputs of dimension dmodel = 512. Decoder: The decoder is also composed of a stack of N = 6 identical layers",
+          "score": 0.4200468957424164
+        },
+        {
+          "vector_index": 198,
+          "chunk_id": "bert_2018_p009_c005",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 9,
+          "chunk_on_page": 5,
+          "text": "e-of-the-art methods. The best performing method concatenates the token representations from the top four hidden layers of the pre-trained Transformer which is only 0.3 F1 behind ﬁne-tuning the entire model. This demonstrates that BERT is effective for both ﬁnetuning and feature-based approaches",
+          "score": 0.4151826500892639
+        },
+        {
+          "vector_index": 73,
+          "chunk_id": "attention_2017_p001_c003",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 1,
+          "chunk_on_page": 3,
+          "text": "ing data. ∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started the effort to evaluate this idea Ashish, with Illia, designed and implemented the first Transformer models and has been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head attention and the parameter-free position representation and became the other person involved in nearly every detail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and tensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and efficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and implementing tensor2tensor, replacing our earlier codebase",
+          "score": 0.41518235206604004
+        },
+        {
+          "vector_index": 327,
+          "chunk_id": "gpt2_2019_p010_c008",
+          "paper_id": "gpt2_2019",
+          "title": "Language Models are Unsupervised Multitask Learners",
+          "page": 10,
+          "chunk_on_page": 8,
+          "text": ". Dehghani, M., Gouws, S., Vinyals, O., Uszkoreit, J., and Kaiser, Ł. Universal transformers. arXiv preprint arXiv:1807.03819, 2018. Devlin, J., Chang M.-W., Lee, K., and Toutanova, K. Bert: Pretraining of deep bidirectional transformers for language understanding",
+          "score": 0.3846088945865631
+        }
+      ],
+      "retrieval_time_seconds": 0.010466609999866705,
+      "generation_time_seconds": 9.75836852500015,
+      "prompt_tokens": 1005,
+      "generated_tokens": 129,
+      "citations": [
+        "attention_2017_p003_c000"
+      ],
+      "valid_citations": [
+        "attention_2017_p003_c000"
+      ],
+      "invalid_citations": []
+    },
+    {
+      "question_id": "q03",
+      "question": "Why does the Transformer not require recurrence to model relationships between tokens?",
+      "expected_papers": [
+        "attention_2017"
+      ],
+      "answer": "The Transformer does not require recurrence because it relies solely on self-attention to model relationships between tokens. This is evident from the text in [SOURCE: attention_2017_p002_c001] and [SOURCE: attention_2017_p002_c002], which states that the Transformer \"allows for significantly more parallelization and can reach a new state of the art in translation quality after being trained for as little as twelve hours on eight P100 GPUs.\" Additionally, [SOURCE: attention_2017_p002_c005] mentions that \"Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences.\" [SOURCE: bert_2018_p001_c004] further supports this by stating that \"this limits the choice of architectures that can be used during pre-training,\" indicating that the Transformer avoids recurrence.",
+      "sources": [
+        {
+          "chunk_id": "bert_2018_p009_c005",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 9,
+          "score": 0.5428243279457092
+        },
+        {
+          "chunk_id": "attention_2017_p002_c005",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 2,
+          "score": 0.5042673349380493
+        },
+        {
+          "chunk_id": "bert_2018_p001_c004",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 1,
+          "score": 0.4396727681159973
+        },
+        {
+          "chunk_id": "attention_2017_p002_c001",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 2,
+          "score": 0.43325525522232056
+        },
+        {
+          "chunk_id": "attention_2017_p002_c002",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 2,
+          "score": 0.4236111342906952
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "vector_index": 198,
+          "chunk_id": "bert_2018_p009_c005",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 9,
+          "chunk_on_page": 5,
+          "text": "e-of-the-art methods. The best performing method concatenates the token representations from the top four hidden layers of the pre-trained Transformer which is only 0.3 F1 behind ﬁne-tuning the entire model. This demonstrates that BERT is effective for both ﬁnetuning and feature-based approaches",
+          "score": 0.5428243279457092
+        },
+        {
+          "vector_index": 80,
+          "chunk_id": "attention_2017_p002_c005",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 2,
+          "chunk_on_page": 5,
+          "text": "anism instead of sequencealigned recurrence and have been shown to perform well on simple-language question answering and language modeling tasks [34] To the best of our knowledge, however, the Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequencealigned RNNs or convolution. In the following sections, we will describe the Transformer, motivate self-attention and discuss its advantages over models such as [17, 18] and [9]. 3 Model Architecture Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35]. Here, the encoder maps an input sequence of symbol representations (x1, ..., xn) to a sequence of continuous representations z = (z1, ..., zn). Given z, the decoder then generates an output sequence (y1, ..., ym) of symbols one element at a time. At each step the model is auto-regressive [10]",
+          "score": 0.5042673349380493
+        },
+        {
+          "vector_index": 142,
+          "chunk_id": "bert_2018_p001_c004",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 1,
+          "chunk_on_page": 4,
+          "text": "this limits the choice of architectures that can be used during pre-training. For example, in OpenAI GPT, the authors use a left-toright architecture where every token can only attend to previous tokens in the self-attention layers of the Transformer (Vaswani et al., 2017)",
+          "score": 0.4396727681159973
+        },
+        {
+          "vector_index": 76,
+          "chunk_id": "attention_2017_p002_c001",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 2,
+          "chunk_on_page": 1,
+          "text": "udes parallelization within training examples, which becomes critical at longer sequence lengths, as memory constraints limit batching across examples Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter. The fundamental constraint of sequential computation, however, remains. Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network. In this work we propose the Transformer, a model architecture eschewing recurrence and instead relying entirely on an attention mechanism to draw global dependencies between input and output",
+          "score": 0.43325525522232056
+        },
+        {
+          "vector_index": 77,
+          "chunk_id": "attention_2017_p002_c002",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 2,
+          "chunk_on_page": 2,
+          "text": "a model architecture eschewing recurrence and instead relying entirely on an attention mechanism to draw global dependencies between input and output The Transformer allows for significantly more parallelization and can reach a new state of the art in translation quality after being trained for as little as twelve hours on eight P100 GPUs. 2 Background The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU [16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12]",
+          "score": 0.4236111342906952
+        }
+      ],
+      "retrieval_time_seconds": 0.014494015000082072,
+      "generation_time_seconds": 15.271463727000082,
+      "prompt_tokens": 1029,
+      "generated_tokens": 210,
+      "citations": [
+        "attention_2017_p002_c001",
+        "attention_2017_p002_c002",
+        "attention_2017_p002_c005",
+        "bert_2018_p001_c004"
+      ],
+      "valid_citations": [
+        "attention_2017_p002_c001",
+        "attention_2017_p002_c002",
+        "attention_2017_p002_c005",
+        "bert_2018_p001_c004"
+      ],
+      "invalid_citations": []
+    },
+    {
+      "question_id": "q04",
+      "question": "What is the purpose of pre-training in BERT?",
+      "expected_papers": [
+        "bert_2018"
+      ],
+      "answer": "The purpose of pre-training in BERT is to train the model on unlabeled data over different pre-training tasks. [SOURCE: bert_2018_p003_c002] During pre-training, BERT learns [SEP], [CLS] and sentence A/B embeddings, which are also learned during fine-tuning. [SOURCE: bert_2018_p014_c002] The pre-training tasks are illustrated with examples. [SOURCE: bert_2018_p012_c003] Pre-training helps the model understand language understanding tasks better. [SOURCE: bert_2018_p014_c001]",
+      "sources": [
+        {
+          "chunk_id": "bert_2018_p003_c002",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 3,
+          "score": 0.6465369462966919
+        },
+        {
+          "chunk_id": "bert_2018_p012_c003",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 12,
+          "score": 0.608642578125
+        },
+        {
+          "chunk_id": "bert_2018_p014_c001",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 14,
+          "score": 0.5982756614685059
+        },
+        {
+          "chunk_id": "bert_2018_p014_c002",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 14,
+          "score": 0.5943671464920044
+        },
+        {
+          "chunk_id": "bert_2018_p016_c004",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 16,
+          "score": 0.5931481122970581
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "vector_index": 153,
+          "chunk_id": "bert_2018_p003_c002",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 3,
+          "chunk_on_page": 2,
+          "text": "tance of transfer learning from large pre-trained models, where an effective recipe is to ﬁne-tune models pre-trained with ImageNet (Deng et al., 2009 Yosinski et al., 2014). 3 BERT We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and ﬁne-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks",
+          "score": 0.6465369462966919
+        },
+        {
+          "vector_index": 219,
+          "chunk_id": "bert_2018_p012_c003",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 12,
+          "chunk_on_page": 3,
+          "text": "ory-like visual explanations by watching movies and reading books. In Proceedings of the IEEE international conference on computer vision, pages 19–27 Appendix for “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding” We organize the appendix into three sections: • Additional implementation details for BERT are presented in Appendix A; • Additional details for our experiments are presented in Appendix B; and • Additional ablation studies are presented in Appendix C. We present additional ablation studies for BERT including: – Effect of Number of Training Steps; and – Ablation for Different Masking Procedures. A Additional Details for BERT A.1 Illustration of the Pre-training Tasks We provide examples of the pre-training tasks in the following",
+          "score": 0.608642578125
+        },
+        {
+          "vector_index": 229,
+          "chunk_id": "bert_2018_p014_c001",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 14,
+          "chunk_on_page": 1,
+          "text": "d approach. The most comparable existing pre-training method to BERT is OpenAI GPT, which trains a left-to-right Transformer LM on a large text corpus In fact, many of the design decisions in BERT were intentionally made to make it as close to GPT as possible so that the two methods could be minimally compared. The core argument of this work is that the bi-directionality and the two pretraining tasks presented in Section 3.1 account for the majority of the empirical improvements, but we do note that there are several other differences between how BERT and GPT were trained: • GPT is trained on the BooksCorpus (800M words); BERT is trained on the BooksCorpus (800M words) and Wikipedia (2,500M words). • GPT uses a sentence separator ([SEP]) and classiﬁer token ([CLS]) which are only introduced at ﬁne-tuning time; BERT learns [SEP], [CLS] and sentence A/B embeddings during pre-training. • GPT was trained for 1M steps with a batch size of 32,000 words",
+          "score": 0.5982756614685059
+        },
+        {
+          "vector_index": 230,
+          "chunk_id": "bert_2018_p014_c002",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 14,
+          "chunk_on_page": 2,
+          "text": "uning time; BERT learns [SEP], [CLS] and sentence A/B embeddings during pre-training. • GPT was trained for 1M steps with a batch size of 32,000 words BERT was trained for 1M steps with a batch size of 128,000 words",
+          "score": 0.5943671464920044
+        },
+        {
+          "vector_index": 243,
+          "chunk_id": "bert_2018_p016_c004",
+          "paper_id": "bert_2018",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "page": 16,
+          "chunk_on_page": 4,
+          "text": "abilities of the speciﬁc strategies used during MLM pre-training (BERT uses 80%, 10%, 10%). The right part of the paper represents the Dev set results For the feature-based approach, we concatenate the last 4 layers of BERT as the features, which was shown to be the best approach in Section 5.3. From the table it can be seen that ﬁne-tuning is surprisingly robust to different masking strategies. However, as expected, using only the MASK strategy was problematic when applying the featurebased approach to NER. Interestingly, using only the RND strategy performs much worse than our strategy as well.",
+          "score": 0.5931481122970581
+        }
+      ],
+      "retrieval_time_seconds": 0.01035265099994831,
+      "generation_time_seconds": 10.80947062700011,
+      "prompt_tokens": 1075,
+      "generated_tokens": 144,
+      "citations": [
+        "bert_2018_p003_c002",
+        "bert_2018_p014_c002",
+        "bert_2018_p012_c003",
+        "bert_2018_p014_c001"
+      ],
+      "valid_citations": [
+        "bert_2018_p003_c002",
+        "bert_2018_p014_c002",
+        "bert_2018_p012_c003",
+        "bert_2018_p014_c001"
+      ],
+      "invalid_citations": []
+    },
+    {
+      "question_id": "q05",
+      "question": "What are the two moment estimates used by Adam?",
+      "expected_papers": [
+        "adam_2014"
+      ],
+      "answer": "The two moment estimates used by Adam are the first moment (mean) and the second moment (variance).\n\n[SOURCE: adam_2014_p003_c004] [SOURCE: adam_2014_p003_c003]",
+      "sources": [
+        {
+          "chunk_id": "adam_2014_p003_c004",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 3,
+          "score": 0.6979265809059143
+        },
+        {
+          "chunk_id": "adam_2014_p003_c003",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 3,
+          "score": 0.5328565239906311
+        },
+        {
+          "chunk_id": "adam_2014_p009_c000",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 9,
+          "score": 0.5199864506721497
+        },
+        {
+          "chunk_id": "adam_2014_p005_c002",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 5,
+          "score": 0.47904694080352783
+        },
+        {
+          "chunk_id": "adam_2014_p004_c003",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 4,
+          "score": 0.4782182276248932
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "vector_index": 18,
+          "chunk_id": "adam_2014_p003_c004",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 3,
+          "chunk_on_page": 4,
+          "text": "CORRECTION As explained in section 2, Adam utilizes initialization bias correction terms. We will here derive the term for the second moment estimate the derivation for the ﬁrst moment estimate is completely analogous. Let g be the gradient of the stochastic objective f, and we wish to estimate its second raw moment (uncentered variance) using an exponential moving average of the squared gradient, with decay rate β2. Let g1, ..., gT be the gradients at subsequent timesteps, each a draw from an underlying gradient distribution gt ∼p(gt). Let us initialize the exponential moving average as v0 = 0 (a vector of zeros)",
+          "score": 0.6979265809059143
+        },
+        {
+          "vector_index": 17,
+          "chunk_id": "adam_2014_p003_c003",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 3,
+          "chunk_on_page": 3,
+          "text": ", the SNR value typically becomes closer to 0 towards an optimum, leading to smaller effective steps in parameter space: a form of automatic annealing The effective stepsize ∆t is also invariant to the scale of the gradients; rescaling the gradients g with factor c will scale bmt with a factor c and bvt with a factor c2, which cancel out: (c · bmt)/(√ c2 · bvt) = bmt/√bvt. 3 INITIALIZATION BIAS CORRECTION As explained in section 2, Adam utilizes initialization bias correction terms. We will here derive the term for the second moment estimate",
+          "score": 0.5328565239906311
+        },
+        {
+          "vector_index": 47,
+          "chunk_id": "adam_2014_p009_c000",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 9,
+          "chunk_on_page": 0,
+          "text": "Published as a conference paper at ICLR 2015 Algorithm 2: AdaMax, a variant of Adam based on the inﬁnity norm. See section 7.1 for details. Good default settings for the tested machine learning problems are α = 0.002, β1 = 0.9 and β2 = 0.999. With βt 1 we denote β1 to the power t. Here, (α/(1 −βt 1)) is the learning rate with the bias-correction term for the ﬁrst moment. All operations on vectors are element-wise. Require: α: Stepsize Require: β1, β2 ∈[0, 1): Exponential decay rates Require: f(θ): Stochastic objective function with parameters θ Require: θ0: Initial parameter vector m0 ←0 (Initialize 1st moment vector) u0 ←0 (Initialize the exponentially weighted inﬁnity norm) t ←0 (Initialize timestep) while θt not converged do t ←t + 1 gt ←∇θft(θt−1) (Get gradients w.r.t",
+          "score": 0.5199864506721497
+        },
+        {
+          "vector_index": 29,
+          "chunk_id": "adam_2014_p005_c002",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 5,
+          "chunk_on_page": 2,
+          "text": "meters as θt+1 = θt −α · gt/ qPt i=1 g2 t . Note that if we choose β2 to be inﬁnitesimally close to 1 from below, then limβ2→1 bvt = t−1 · Pt i=1 g2 t AdaGrad corresponds to a version of Adam with β1 = 0, inﬁnitesimal (1 −β2) and a replacement of α by an annealed version αt = α · t−1/2, namely θt −α · t−1/2 · bmt/ p limβ2→1 bvt = θt −α · t−1/2 · gt/ q t−1 · Pt i=1 g2 t = θt −α · gt/ qPt i=1 g2 t . Note that this direct correspondence between Adam and Adagrad does not hold when removing the bias-correction terms",
+          "score": 0.47904694080352783
+        },
+        {
+          "vector_index": 25,
+          "chunk_id": "adam_2014_p004_c003",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 4,
+          "chunk_on_page": 3,
+          "text": "aptive method. Decaying β1,t towards zero is important in our theoretical analysis and also matches previous empirical ﬁndings, e.g. (Sutskever et al. 2013) suggests reducing the momentum coefﬁcient in the end of training can improve convergence. Finally, we can show the average regret of Adam converges, Corollary 4.2",
+          "score": 0.4782182276248932
+        }
+      ],
+      "retrieval_time_seconds": 0.01030408799988436,
+      "generation_time_seconds": 5.04109151800003,
+      "prompt_tokens": 1147,
+      "generated_tokens": 59,
+      "citations": [
+        "adam_2014_p003_c004",
+        "adam_2014_p003_c003"
+      ],
+      "valid_citations": [
+        "adam_2014_p003_c004",
+        "adam_2014_p003_c003"
+      ],
+      "invalid_citations": []
+    },
+    {
+      "question_id": "q06",
+      "question": "How does Adam adapt the learning rate for individual parameters?",
+      "expected_papers": [
+        "adam_2014"
+      ],
+      "answer": "Adam adapts the learning rate for individual parameters by scaling their gradients inversely proportional to a (scaled) L2 norm of their individual current and past gradients. Specifically, the update rule for individual weights is:\n\n\\[ \\theta_{t+1} = \\theta_t - \\alpha \\cdot \\frac{g_t}{\\sqrt{u_t + \\epsilon}} \\]\n\nwhere:\n- \\( \\alpha \\) is the learning rate,\n- \\( g_t \\) is the gradient of the loss function with respect to the parameters at time \\( t \\),\n- \\( u_t \\) is the exponentially weighted infinity norm of the gradients,\n- \\( \\epsilon \\) is a small constant to avoid division by zero.\n\nThis approach helps in adapting the learning rate for each parameter individually, making it more efficient for training deep learning models. [SOURCE: adam_2014_p009_c000]",
+      "sources": [
+        {
+          "chunk_id": "adam_2014_p005_c003",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 5,
+          "score": 0.6373649835586548
+        },
+        {
+          "chunk_id": "attention_2017_p007_c005",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 7,
+          "score": 0.6020093560218811
+        },
+        {
+          "chunk_id": "adam_2014_p008_c002",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 8,
+          "score": 0.586423397064209
+        },
+        {
+          "chunk_id": "adam_2014_p009_c000",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 9,
+          "score": 0.5840511322021484
+        },
+        {
+          "chunk_id": "adam_2014_p001_c001",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 1,
+          "score": 0.564182698726654
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "vector_index": 30,
+          "chunk_id": "adam_2014_p005_c003",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 5,
+          "chunk_on_page": 3,
+          "text": "g2 t = θt −α · gt/ qPt i=1 g2 t . Note that this direct correspondence between Adam and Adagrad does not hold when removing the bias-correction terms without bias correction, like in RMSProp, a β2 inﬁnitesimally close to 1 would lead to inﬁnitely large bias, and inﬁnitely large parameter updates. 6 EXPERIMENTS To empirically evaluate the proposed method, we investigated different popular machine learning models, including logistic regression, multilayer fully connected neural networks and deep convolutional neural networks. Using large models and datasets, we demonstrate Adam can efﬁciently solve practical deep learning problems. We use the same parameter initialization when comparing different optimization algorithms",
+          "score": 0.6373649835586548
+        },
+        {
+          "vector_index": 105,
+          "chunk_id": "attention_2017_p007_c005",
+          "paper_id": "attention_2017",
+          "title": "Attention Is All You Need",
+          "page": 7,
+          "chunk_on_page": 5,
+          "text": "seconds. The big models were trained for 300,000 steps (3.5 days). 5.3 Optimizer We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9 We varied the learning rate over the course of training, according to the formula: lrate = d−0.5 model · min(step_num−0.5, step_num · warmup_steps−1.5) (3) This corresponds to increasing the learning rate linearly for the first warmup_steps training steps, and decreasing it thereafter proportionally to the inverse square root of the step number. We used warmup_steps = 4000. 5.4 Regularization We employ three types of regularization during training: 7",
+          "score": 0.6020093560218811
+        },
+        {
+          "vector_index": 45,
+          "chunk_id": "adam_2014_p008_c002",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 8,
+          "chunk_on_page": 2,
+          "text": "values β2 close to 1 indeed lead to instabilities in training when no bias correction term was present, especially at ﬁrst few epochs of the training The best results were achieved with small values of (1−β2) and bias correction; this was more apparent towards the end of optimization when gradients tends to become sparser as hidden units specialize to speciﬁc patterns. In summary, Adam performed equal or better than RMSProp, regardless of hyper-parameter setting. 7 EXTENSIONS 7.1 ADAMAX In Adam, the update rule for individual weights is to scale their gradients inversely proportional to a (scaled) L2 norm of their individual current and past gradients. We can generalize the L2 norm based update rule to a Lp norm based update rule. Such variants become numerically unstable for large p. However, in the special case where we let p →∞, a surprisingly simple and stable algorithm emerges",
+          "score": 0.586423397064209
+        },
+        {
+          "vector_index": 47,
+          "chunk_id": "adam_2014_p009_c000",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 9,
+          "chunk_on_page": 0,
+          "text": "Published as a conference paper at ICLR 2015 Algorithm 2: AdaMax, a variant of Adam based on the inﬁnity norm. See section 7.1 for details. Good default settings for the tested machine learning problems are α = 0.002, β1 = 0.9 and β2 = 0.999. With βt 1 we denote β1 to the power t. Here, (α/(1 −βt 1)) is the learning rate with the bias-correction term for the ﬁrst moment. All operations on vectors are element-wise. Require: α: Stepsize Require: β1, β2 ∈[0, 1): Exponential decay rates Require: f(θ): Stochastic objective function with parameters θ Require: θ0: Initial parameter vector m0 ←0 (Initialize 1st moment vector) u0 ←0 (Initialize the exponentially weighted inﬁnity norm) t ←0 (Initialize timestep) while θt not converged do t ←t + 1 gt ←∇θft(θt−1) (Get gradients w.r.t",
+          "score": 0.5840511322021484
+        },
+        {
+          "vector_index": 1,
+          "chunk_id": "adam_2014_p001_c001",
+          "paper_id": "adam_2014",
+          "title": "Adam: A Method for Stochastic Optimization",
+          "page": 1,
+          "chunk_on_page": 1,
+          "text": "have intuitive interpretations and typically require little tuning. Some connections to related algorithms, on which Adam was inspired, are discussed We also analyze the theoretical convergence properties of the algorithm and provide a regret bound on the convergence rate that is comparable to the best known results under the online convex optimization framework. Empirical results demonstrate that Adam works well in practice and compares favorably to other stochastic optimization methods. Finally, we discuss AdaMax, a variant of Adam based on the inﬁnity norm. 1 INTRODUCTION Stochastic gradient-based optimization is of core practical importance in many ﬁelds of science and engineering. Many problems in these ﬁelds can be cast as the optimization of some scalar parameterized objective function requiring maximization or minimization with respect to its parameters. If the function is differentiable w.r.t. its parameters, gradient descent is a relatively efﬁcient optimization method",
+          "score": 0.564182698726654
+        }
+      ],
+      "retrieval_time_seconds": 0.012490823999996792,
+      "generation_time_seconds": 14.108763131999922,
+      "prompt_tokens": 1294,
+      "generated_tokens": 187,
+      "citations": [
+        "adam_2014_p009_c000"
+      ],
+      "valid_citations": [
+        "adam_2014_p009_c000"
+      ],
+      "invalid_citations": []
+    }
+  ]
+}
